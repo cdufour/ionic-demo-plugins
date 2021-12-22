@@ -1,12 +1,27 @@
 import { Component } from '@angular/core';
+import { Geolocation, Position } from '@capacitor/geolocation';
+
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
+  styleUrls: ['./gps.css']
 })
 export class Tab1Page {
 
-  constructor() {}
+  position: Position | null = null;
+
+  constructor() {
+    this.getPosition();
+  }
+
+  getPosition(): void {
+    Geolocation
+      .getCurrentPosition()
+      .then((position: Position) => {
+        console.log(position);
+        this.position = position;
+      })
+  }
 
 }

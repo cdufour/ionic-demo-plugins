@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Haptics } from '@capacitor/haptics';
 
 @Component({
   selector: 'app-tab3',
@@ -8,5 +9,9 @@ import { Component } from '@angular/core';
 export class Tab3Page {
 
   constructor() {}
+
+  onClick(): void {
+    Haptics.vibrate({duration: 1000}).then(() => {})
+  }
 
 }
